@@ -1,0 +1,127 @@
+#VRML_SIM R2021a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.10339484174349194 -0.9650883646136035 -0.24065318445488898 2.355461503034667
+  position -1.0651078957520952 0.8486938776797581 -0.9466944139877639
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  translation -0.11932561285158161 -0.0002029482956221948 0.10826522038108066
+  rotation -0.2083056871379755 0.977950985864487 0.014852944241932495 0.14506981834792398
+  children [
+    DEF Body Transform {
+      translation 0 0.0415 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.12549 0.290196 0.529412
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 6.350899594966866
+        anchor 0.045 0.025 0
+      }
+      device [
+        RotationalMotor {
+          name "Motor_1"
+        }
+        PositionSensor {
+          name "ps_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 0.025 0
+        rotation -0.03385821872191924 0.033831267244790963 -0.9988538763911318 4.712038526360111
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF Wheel_Physics Physics {
+        }
+        linearVelocity 0.010835748096107798 6.346002969245358e-05 0.07776961511857067
+        angularVelocity 3.110745880728555 -0.004072128777378283 -0.4438432560442015
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 17.56346748109429
+        anchor -0.045 0.025 0
+      }
+      device [
+        RotationalMotor {
+          name "Motor_2"
+        }
+        PositionSensor {
+          name "ps_2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 0.025 0
+        rotation 0.5145664438020974 -0.514156843821218 -0.6861953911712513 4.3451376098384955
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE Wheel_Physics
+        linearVelocity 0.011039423748090397 6.386026377688856e-05 0.07777614966460479
+        angularVelocity 3.111143005436132 -0.00014279469274360116 -0.44106335615790193
+      }
+    }
+    Solid {
+      translation 0.015 0.07 0.045
+      children [
+        DEF eye Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    Solid {
+      translation -0.015 0.07 0.045
+      children [
+        USE eye
+      ]
+      name "solid(3)"
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "odometer"
+  linearVelocity 0.010943033915581915 5.499072259577105e-05 0.07780707434460302
+  angularVelocity 0.0022257887922105257 -0.0006026673201812146 -0.0003311002542094807
+}
